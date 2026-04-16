@@ -11,7 +11,7 @@ function Container () {
 
     function addIncome () {
             if(!incomeInput || !incomeDescritionInput.trim()) return;
-            setIncomeList([...incomeList, { description: incomeDescritionInput.trim(), amount: incomeInput }]);
+            setIncomeList([...incomeList, { description: incomeDescritionInput.trim(), amount: parseFloat(incomeInput) }]);
 
             setIncomeInput("");
             setIncomeDescriptionInput("")
@@ -19,7 +19,7 @@ function Container () {
 
     function addExpense () {
         if(!expenseInput || !expenseDescritionInput.trim()) return;
-            setExpenseList([...expenseList, { description: expenseDescritionInput.trim(), amount: expenseInput }]);
+            setExpenseList([...expenseList, { description: expenseDescritionInput.trim(), amount: parseFloat(expenseInput) }]);
 
             setExpenseInput("");
             setExpenseDescriptionInput("")
@@ -31,7 +31,10 @@ function Container () {
                 Personal Finance Tracker
             </h1>
             <div className="grid grid-cols-2 gap-4">
-                <div className="bg-[hsl(0,100%,100%)]">
+                <div className="bg-[#9DA1AA] border-4 border-[hsl(0,100%,100%)] rounded-lg">
+                    <h2 className="text-lg text-[#9DA1AA] font-semibold">
+                        Income
+                    </h2>
                     <ul>
                         {incomeList.map((income, index) => {
                             return (
@@ -42,6 +45,10 @@ function Container () {
                             );
                         })}
                     </ul>
+
+                    <h2 className="text-lg text-[#9DA1AA] font-semibold">
+                        Expenses
+                    </h2>
                     <ul>
                         {expenseList.map((expense, index) => {
                             return (
@@ -53,6 +60,7 @@ function Container () {
                         })}
                     </ul>
                 </div>
+
 
                 <IncomeCard 
                     addIncome={addIncome}
