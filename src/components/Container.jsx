@@ -1,4 +1,3 @@
-import { useState } from "react";
 import IncomeCard from "./IcomeCard";
 
 function Container () {
@@ -8,7 +7,38 @@ function Container () {
             <h1 className="text-4xl font-semibold text-[#9DA1AA]">
                 Personal Finance Tracker
             </h1>
-            <IncomeCard income={income} setIcome={setIncome} />
+            <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[hsl(0,100%,100%)]">
+                    <ul>
+                        <li>
+                            Income list will appear here
+                        </li>
+                        <li>
+                            Income list will appear here
+                        </li>
+                        <li>
+                            Income list will appear here
+                        </li>
+                        <li>
+                            Income list will appear here
+                        </li>
+                        <li>
+                            Income list will appear here
+                        </li>
+                        <li>
+                            Income list will appear here
+                        </li>
+                        {/*
+                        {incomeList.map((income, index) => {
+                            return (
+                                <li key={index}></li>
+                            );
+                        })}
+                        */}
+                    </ul>
+                </div>
+                <IncomeCard />
+            </div>
         </div>
     );
 }

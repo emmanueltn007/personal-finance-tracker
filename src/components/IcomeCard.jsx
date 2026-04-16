@@ -1,18 +1,31 @@
 import { useState } from "react";
 
-function IncomeCard({ income, setIncome }) {
-  const [incomeInput, setIncomeInput] = useState([]);
+function IncomeCard() {
+  const [incomeList, setIncomeList] = useState([])
+  const [incomeInput, setIncomeInput] = useState("");
   const [incomeDescritionInput, setIncomeDescriptionInput] = useState("")
 
   function addIncome () {
-        setIncome([...incomeInput, { description: incomeDescritionInput.trim(), amount: incomeInput }]);
+        setIncomeList([...incomeList, { description: incomeDescritionInput.trim(), amount: incomeInput }]);
 
-        setIncome("");
+        setIncomeInput("");
         setIncomeDescriptionInput("")
   }
 
   return (
     <div className="flex flex-col gap-4">
+      <ul>
+        {incomeList.map((income, index) => {
+            return (
+                <li key={index}>
+                    Income: ${income.amount} {" "}
+                    Description: {income.description}
+                </li>
+            );
+        })}
+      </ul>
+
+
       <div className="flex gap-4">
         <div className="flex flex-col gap-2">
             <label  className="text-[hsl(0,100%,100%)]" htmlFor="icome-description">
@@ -35,12 +48,15 @@ function IncomeCard({ income, setIncome }) {
                 className="border border-[hsl(0,100%,100%)] rounded-md py-1" 
                 type="number" 
                 id="amount" 
-                onChange={(e) => setIncome(e.target.value)}
-                value={income}
+                onChange={(e) => setIncomeInput(e.target.value)}
+                value={incomeInput}
             />
         </div>
       </div>
-      <button className="border-2 border-transparent hover:border-[hsl(0,100%,100%)] hover:bg-transparent transition-all duration-300 p-2 bg-[#B7B6AC] rounded-md font-semibold tracking-[4px] cursor-pointer text-[hsl(0,100%,100%)]">
+      <button 
+        onClick={addIncome}
+        className="border-2 border-transparent hover:border-[hsl(0,100%,100%)] hover:bg-transparent transition-all duration-300 p-2 bg-[#B7B6AC] rounded-md font-semibold tracking-[4px] cursor-pointer text-[hsl(0,100%,100%)]"
+      >
         ADD
       </button>
       <button className="border-2 border-transparent hover:border-[hsl(0,100%,100%)] hover:bg-transparent transition-all duration-300 p-2 bg-[#029456] rounded-md font-semibold tracking-[4px] cursor-pointer text-[hsl(0,100%,100%)]">
