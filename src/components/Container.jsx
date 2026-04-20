@@ -59,7 +59,7 @@ function Container () {
     }
 
     return (
-        <div className="max-md:w-full md:h-[80%] md:w-[80%] flex flex-col items-center gap-8 bg-[#3C3C4C] p-8 rounded-xl shadow-md shadow-gray-700 outline-4">
+        <div className="h-screen w-full md:h-[80%] md:w-[80%] flex flex-col items-center gap-8 bg-[#3C3C4C] p-8 rounded-xl shadow-md shadow-gray-700 outline-4">
             <h1 className="text-center text-2xl font-semibold text-[#9DA1AA] tracking-[0.75rem]">
                 PERSONAL FINANCE TRACKER
             </h1>
