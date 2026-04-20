@@ -1,4 +1,8 @@
+import { Route, Routes } from "react-router";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import Incomes from "./Incomes";
+import Expenses from "./Expenses";
 import IncomeForm from "./IncomeForm";
 import ExpensesForm from "./ExpensesForm";
 
@@ -9,6 +13,8 @@ function Container () {
     const [expenseInput, setExpenseInput] = useState("");
     const [incomeDescritionInput, setIncomeDescriptionInput] = useState("");
     const [expenseDescritionInput, setExpenseDescriptionInput] = useState("");
+
+    const navigate = useNavigate();
 
     function addIncome () {
             if(!incomeInput || !incomeDescritionInput.trim()) return;
@@ -43,110 +49,35 @@ function Container () {
             <h1 className="text-4xl font-semibold text-[#9DA1AA]">
                 Personal Finance Tracker
             </h1>
-            <div className="grid grid-cols-2 gap-4">
-                <div className="bg-[#9DA1AA] border-4 border-[hsl(0,100%,100%)] rounded-lg p-2">
-                    <h2 className="text-lg text-[hsl(0,100%,100%)] font-semibold">
-                        Income
-                    </h2>
-                    <h2 className="text-[hsl(0,100%,100%)] font-semibold">
-                        Total Income: R{totalIncome}
-                    </h2>
-
-                    <table className="w-full border border-collapse border-[hsl(0,100%,100%)]">
-                        <thead>
-                            <tr className="">
-                                <th className="border border-[hsl(0,100%,100%)]">
-                                    Description
-                                </th>
-                                <th className="border border-[hsl(0,100%,100%)]">
-                                    Amount
-                                </th>
-                                <th className="border border-[hsl(0,100%,100%)]">
-                                    Remove
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="">
-                            {incomeList.map((income, index) => {
-                                return (
-                                    <tr className="" key={`${index}-${income.id}`}> 
-                                        <td className="border border-[hsl(0,100%,100%)]">
-                                            {income.description} 
-                                        </td>
-                                        <td className="border border-[hsl(0,100%,100%)]">
-                                            R{income.amount}
-                                        </td>
-                                        <td className=" border border-[hsl(0,100%,100%)]">
-                                            <button className="cursor-pointer" onClick={() => removeIncomeItem(income.id)}>
-                                                 <img className="w-4 h-4" src="/images/x-mark.svg" alt="delete icon" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                );
-                                
-                            })}
-                        </tbody>
-                    </table>
-
-                    <h2 className="text-lg text-[hsl(0,100%,100%)] font-semibold">
-                        Expenses
-                    </h2>
-                    <h2 className="text-[hsl(0,100%,100%)] font-semibold">
-                        Total Expenses: R{totalExpenses}
-                    </h2>
-                    <table className="w-full border border-collapse border-[hsl(0,100%,100%)]">
-                        <thead>
-                            <tr className="">
-                                <th className="border border-[hsl(0,100%,100%)]">
-                                    Description
-                                </th>
-                                <th className="border border-[hsl(0,100%,100%)]">
-                                    Amount
-                                </th>
-                                <th className="border border-[hsl(0,100%,100%)]">
-                                    Remove
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody className="">
-                            {expenseList.map((expense, index) => {
-                                return (
-                                    <tr key={`${index}-${expense.id}`}> 
-                                        <td className="border border-[hsl(0,100%,100%)]">
-                                            {expense.description} 
-                                        </td>
-                                        <td className="border border-[hsl(0,100%,100%)]">
-                                            R{expense.amount}
-                                        </td>
-                                        <td className="border border-[hsl(0,100%,100%)]">
-                                            <button className="cursor-pointer" onClick={() => removeExpenseItem(expense.id)}>
-                                                 <img className="w-4 h-4" src="/images/x-mark.svg" alt="delete icon" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                );
-                                
-                            })}
-                        </tbody>
-                    </table>
-                </div>
-
-                <div className="flex flex-col gap-4">
-                    <IncomeForm
-                        addIncome={addIncome}
-                        incomeDescritionInput={incomeDescritionInput} 
-                        setIncomeDescriptionInput={setIncomeDescriptionInput}
-                        incomeInput={incomeInput}
-                        setIncomeInput={setIncomeInput}
+            <div className="flex gap-8 text-[hsl(0,100%,100%)] font-bold">
+                <button 
+                    onClick={() => navigate("/")}
+                    className="cursor-pointer hover:scale-105 transition-all duration-300"
+                >
+                    Incomes
+                </button>
+                <button 
+                    onClick={() => navigate("/expenses")}
+                    className="cursor-pointer hover:scale-105 transition-all duration-300"
+                >
+                    Expenses
+                </button>
+                <button className="cursor-pointer hover:scale-105 transition-all duration-300">
+                    View Statement
+                </button>
+            </div>
+            <div>
+                <Routes>
+                    <Route 
+                        path="/" 
+                        element={<Incomes addIncome={addIncome} removeIncomeItem={removeIncomeItem} totalIncome={totalIncome} incomeList={incomeList} addIncome={addIncome} incomeDescritionInput={incomeDescritionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} />} 
                     />
-                    <ExpensesForm  
-                        addExpense={addExpense} 
-                        expenseDescritionInput={expenseDescritionInput} 
-                        setExpenseDescriptionInput={setExpenseDescriptionInput} 
-                        expenseInput={expenseInput} 
-                        setExpenseInput={setExpenseInput} 
-                    /> 
-                </div>
+                    <Route 
+                        path="/expenses" 
+                        element={<Expenses addExpense={addExpense} removeExpenseItem={removeExpenseItem} totalExpenses={totalExpenses} totalExpenses={totalExpenses} expenseList={expenseList} removeExpenseItem={removeExpenseItem} setExpenseDescriptionInput={setExpenseDescriptionInput} expenseDescritionInput={expenseDescritionInput} setExpenseInput={setExpenseInput} />} 
+                    />
+                    <Route path="/statement" />
+                </Routes>
             </div>
         </div>
     );

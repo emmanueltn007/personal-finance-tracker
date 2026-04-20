@@ -23,7 +23,7 @@ function IncomeForm({ addIncome,incomeDescritionInput, setIncomeDescriptionInput
                 Amount
             </label>
             <input 
-                className="text-[hsl(0,100%,100%)] border border-[hsl(0,100%,100%)] rounded-md py-1" 
+                className="text-[hsl(0,100%,100%)] border border-[hsl(0,100%,100%)] rounded-md py-1 pl-2 outline-none" 
                 type="number" 
                 id="amount" 
                 onChange={(e) => setIncomeInput(e.target.value)}
