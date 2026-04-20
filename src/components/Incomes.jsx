@@ -11,7 +11,7 @@ function Incomes ({ incomeList, addIncome, incomeDescriptionInput, setIncomeDesc
             </div>
            <div className="col-span-2">
                 <IncomeForm 
-                    addIncome={addIncome} incomeDescritionInput={incomeDescriptionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} 
+                    addIncome={addIncome} incomeDescriptionInput={incomeDescriptionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} 
                 />
            </div>
         </div>
