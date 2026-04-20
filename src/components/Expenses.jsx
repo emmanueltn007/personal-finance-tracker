@@ -11,7 +11,7 @@ function Expenses ({ totalExpenses, expenseList, removeExpenseItem, addExpense, 
             </div>
             <div className="col-span-2">
                <ExpensesForm 
-                    addExpense={addExpense} expenseDescritionInput={expenseDescriptionInput} setExpenseDescriptionInput={setExpenseDescriptionInput} expenseInput={expenseInput} setExpenseInput={setExpenseInput} 
+                    addExpense={addExpense} expenseDescriptionInput={expenseDescriptionInput} setExpenseDescriptionInput={setExpenseDescriptionInput} expenseInput={expenseInput} setExpenseInput={setExpenseInput} 
                 /> 
             </div>
             
