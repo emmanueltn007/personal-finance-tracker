@@ -1,12 +1,11 @@
 function IncomeListDisplay({ totalIncome, incomeList, removeIncomeItem }) {
   return (
-    <div>
-      <h2 className="text-lg text-[hsl(0,100%,100%)] font-semibold">Income</h2>
+    <div className="flex flex-col gap-2">
       <h2 className="text-[hsl(0,100%,100%)] font-semibold">
         Total Income: R{totalIncome}
       </h2>
 
-      <table className="w-full border border-collapse border-[hsl(0,100%,100%)]">
+      <table className="w-full border border-collapse border-[hsl(0,100%,100%)] text-[hsl(0,100%,100%)]">
         <thead>
           <tr className="">
             <th className="border border-[hsl(0,100%,100%)]">Description</th>

@@ -1,7 +1,7 @@
-function ExpensesForm({  addExpense, expenseDescritionInput, setExpenseDescriptionInput, expenseInput, setExpenseInput }) {
+function ExpensesForm({  addExpense, expenseDescriptionInput, setExpenseDescriptionInput, expenseInput, setExpenseInput }) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <label
             className="text-[hsl(0,100%,100%)]"
@@ -15,7 +15,7 @@ function ExpensesForm({  addExpense, expenseDescritionInput, setExpenseDescripti
             id="icome-description"
             placeholder="E.g Petrol"
             onChange={(e) => setExpenseDescriptionInput(e.target.value)}
-            value={expenseDescritionInput}
+            value={expenseDescriptionInput}
           />
         </div>
         <div className="flex flex-col gap-2">

@@ -5,28 +5,42 @@ import Incomes from "./Incomes";
 import Expenses from "./Expenses";
 import IncomeForm from "./IncomeForm";
 import ExpensesForm from "./ExpensesForm";
+import Statement from "./Statement";
 
 function Container () {
     const [incomeList, setIncomeList] = useState([]);
     const [expenseList, setExpenseList] = useState([]);
     const [incomeInput, setIncomeInput] = useState("");
     const [expenseInput, setExpenseInput] = useState("");
-    const [incomeDescritionInput, setIncomeDescriptionInput] = useState("");
-    const [expenseDescritionInput, setExpenseDescriptionInput] = useState("");
+    const [incomeDescriptionInput, setIncomeDescriptionInput] = useState("");
+    const [expenseDescriptionInput, setExpenseDescriptionInput] = useState("");
+
+    const categories = [
+        {
+            title: "Incomes",
+            path: "/"
+        },{
+            title: "Expenses",
+            path: "/expenses"
+        },{
+            title: "Statement",
+            path: "/statement"
+        }
+    ];
 
     const navigate = useNavigate();
 
     function addIncome () {
-            if(!incomeInput || !incomeDescritionInput.trim()) return;
-            setIncomeList([...incomeList, { description: incomeDescritionInput.trim(), amount: parseFloat(incomeInput), id: Date.now() }]);
+            if(!incomeInput || !incomeDescriptionInput.trim()) return;
+            setIncomeList([...incomeList, { description: incomeDescriptionInput.trim(), amount: parseFloat(incomeInput), id: Date.now() }]);
 
             setIncomeInput("");
             setIncomeDescriptionInput("");
     }
 
     function addExpense () {
-        if(!expenseInput || !expenseDescritionInput.trim()) return;
-            setExpenseList([...expenseList, { description: expenseDescritionInput.trim(), amount: parseFloat(expenseInput), id: Date.now() }]);
+        if(!expenseInput || !expenseDescriptionInput.trim()) return;
+            setExpenseList([...expenseList, { description: expenseDescriptionInput.trim(), amount: parseFloat(expenseInput), id: Date.now() }]);
 
             setExpenseInput("");
             setExpenseDescriptionInput("");
@@ -45,38 +59,34 @@ function Container () {
     }
 
     return (
-        <div className="flex flex-col items-center gap-8 bg-[#3C3C4C] p-8 rounded-xl shadow-md shadow-gray-700 outline-4">
-            <h1 className="text-4xl font-semibold text-[#9DA1AA]">
-                Personal Finance Tracker
+        <div className="max-md:w-full md:h-[80%] md:w-[80%] flex flex-col items-center gap-8 bg-[#3C3C4C] p-8 rounded-xl shadow-md shadow-gray-700 outline-4">
+            <h1 className="text-center text-2xl font-semibold text-[#9DA1AA] tracking-[0.75rem]">
+                PERSONAL FINANCE TRACKER
             </h1>
             <div className="flex gap-8 text-[hsl(0,100%,100%)] font-bold">
-                <button 
-                    onClick={() => navigate("/")}
-                    className="cursor-pointer hover:scale-105 transition-all duration-300"
-                >
-                    Incomes
-                </button>
-                <button 
-                    onClick={() => navigate("/expenses")}
-                    className="cursor-pointer hover:scale-105 transition-all duration-300"
-                >
-                    Expenses
-                </button>
-                <button className="cursor-pointer hover:scale-105 transition-all duration-300">
-                    View Statement
-                </button>
+                {categories.map((category) => {
+                    return (
+                        <button 
+                            key={category.title}
+                            onClick={() => navigate(category.path)}
+                            className="cursor-pointer relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-[hsl(0,100%,100%)] after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
+                        >
+                            {category.title}
+                        </button>
+                    );
+                })}
             </div>
-            <div>
+            <div className="w-full">
                 <Routes>
                     <Route 
                         path="/" 
-                        element={<Incomes addIncome={addIncome} removeIncomeItem={removeIncomeItem} totalIncome={totalIncome} incomeList={incomeList} addIncome={addIncome} incomeDescritionInput={incomeDescritionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} />} 
+                        element={<Incomes addIncome={addIncome} removeIncomeItem={removeIncomeItem} totalIncome={totalIncome} incomeList={incomeList} incomeDescritionInput={incomeDescriptionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} />} 
                     />
                     <Route 
                         path="/expenses" 
-                        element={<Expenses addExpense={addExpense} removeExpenseItem={removeExpenseItem} totalExpenses={totalExpenses} totalExpenses={totalExpenses} expenseList={expenseList} removeExpenseItem={removeExpenseItem} setExpenseDescriptionInput={setExpenseDescriptionInput} expenseDescritionInput={expenseDescritionInput} setExpenseInput={setExpenseInput} />} 
+                        element={<Expenses addExpense={addExpense} totalExpenses={totalExpenses} totalExpenses={totalExpenses} expenseList={expenseList} removeExpenseItem={removeExpenseItem} setExpenseDescriptionInput={setExpenseDescriptionInput} expenseDescritionInput={expenseDescriptionInput} setExpenseInput={setExpenseInput} expenseInput={expenseInput} />} 
                     />
-                    <Route path="/statement" />
+                    <Route path="/statement" element={<Statement />} />
                 </Routes>
             </div>
         </div>

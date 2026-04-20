@@ -1,10 +1,10 @@
-function IncomeForm({ addIncome,incomeDescritionInput, setIncomeDescriptionInput, incomeInput, setIncomeInput }) {
+function IncomeForm({ addIncome,incomeDescriptionInput, setIncomeDescriptionInput, incomeInput, setIncomeInput }) {
 
 
   return (
     <div className="flex flex-col gap-4">
 
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
             <label  className="text-[hsl(0,100%,100%)]" htmlFor="icome-description">
                 Income Description
@@ -15,7 +15,7 @@ function IncomeForm({ addIncome,incomeDescritionInput, setIncomeDescriptionInput
                 id="icome-description" 
                 placeholder="E.g Allowance"
                 onChange={(e) => setIncomeDescriptionInput(e.target.value)}
-                value={incomeDescritionInput}
+                value={incomeDescriptionInput}
             />
         </div>
         <div className="flex flex-col gap-2">
