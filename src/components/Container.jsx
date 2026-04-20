@@ -80,7 +80,7 @@ function Container () {
                 <Routes>
                     <Route 
                         path="/" 
-                        element={<Incomes addIncome={addIncome} removeIncomeItem={removeIncomeItem} totalIncome={totalIncome} incomeList={incomeList} incomeDescritionInput={incomeDescriptionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} />} 
+                        element={<Incomes addIncome={addIncome} removeIncomeItem={removeIncomeItem} totalIncome={totalIncome} incomeList={incomeList} incomeDescriptionInput={incomeDescriptionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} />} 
                     />
                     <Route 
                         path="/expenses" 
