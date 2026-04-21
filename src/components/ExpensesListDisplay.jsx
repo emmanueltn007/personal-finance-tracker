@@ -1,4 +1,9 @@
-function ExpensesListDisplay({ totalExpenses, expenseList, removeExpenseItem }) {
+import { useExpense } from "../hooks/ExpenseContext";
+
+function ExpensesListDisplay() {
+
+  const { totalExpenses, expenseList, removeExpenseItem } = useExpense();
+  
   return (
     <div className="flex flex-col gap-2">
       <h2 className="text-[hsl(0,100%,100%)] font-semibold">

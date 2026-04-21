@@ -1,18 +1,14 @@
 import IncomeForm from "./IncomeForm";
 import IncomeListDisplay from "./IncomeListDisplay";
 
-function Incomes ({ incomeList, addIncome, incomeDescriptionInput, setIncomeDescriptionInput, incomeInput, setIncomeInput, removeIncomeItem, totalIncome }) {
+function Incomes () {
     return (
         <div className="flex flex-col md:grid md:grid-cols-5 md:gap-4">
             <div className="col-span-3">
-                <IncomeListDisplay 
-                    totalIncome={totalIncome} incomeList={incomeList} removeIncomeItem={removeIncomeItem} 
-                />
+                <IncomeListDisplay />
             </div>
            <div className="col-span-2">
-                <IncomeForm 
-                    addIncome={addIncome} incomeDescriptionInput={incomeDescriptionInput} setIncomeDescriptionInput={setIncomeDescriptionInput} incomeInput={incomeInput} setIncomeInput={setIncomeInput} 
-                />
+                <IncomeForm />
            </div>
         </div>
     );

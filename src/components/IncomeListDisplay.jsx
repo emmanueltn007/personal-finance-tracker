@@ -1,4 +1,9 @@
-function IncomeListDisplay({ totalIncome, incomeList, removeIncomeItem }) {
+import { useIncome } from "../hooks/IncomeContext";
+
+function IncomeListDisplay() {
+  
+  const { totalIncome, incomeList, removeIncomeItem } = useIncome();
+
   return (
     <div className="flex flex-col gap-2">
       <h2 className="text-[hsl(0,100%,100%)] font-semibold">

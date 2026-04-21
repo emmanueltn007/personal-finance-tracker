@@ -1,4 +1,9 @@
-function ExpensesForm({  addExpense, expenseDescriptionInput, setExpenseDescriptionInput, expenseInput, setExpenseInput }) {
+import { useExpense } from "../hooks/ExpenseContext";
+
+function ExpensesForm() {
+  
+  const { addExpense, expenseDescriptionInput, setExpenseDescriptionInput, expenseInput, setExpenseInput } = useExpense();
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-4">
