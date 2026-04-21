@@ -1,7 +1,16 @@
-function Statement({ profitLoss, expenseList, incomeList, totalIncome, totalExpenses }) {
+import { useIncome } from "../hooks/IncomeContext";
+import { useExpense } from "../hooks/ExpenseContext";
 
-    const finalreview = totalIncome > totalExpenses ? "After all expenses you still have a positive balance, keep it up!!🎉" : "Oops you're spending more than you receive, you need to watch your spending 👀";
+function Statement() {
+  const { totalIncome, incomeList } = useIncome();
+  const { totalExpenses, expenseList } = useExpense();
 
+  const profitLoss = totalIncome - totalExpenses;
+
+  const finalreview =
+    totalIncome > totalExpenses
+      ? "After all expenses you still have a positive balance, keep it up!!🎉"
+      : "Oops you're spending more than you receive, you need to watch your spending 👀";
 
   return (
     <div className="text-[hsl(0,100%,100%)]">
@@ -57,11 +66,9 @@ function Statement({ profitLoss, expenseList, incomeList, totalIncome, totalExpe
       <p>
         After deducting all expenses your remaining amount is: R{profitLoss}.00
       </p>
-    <br />
+      <br />
 
-      <p>
-          {finalreview}
-      </p>
+      <p>{finalreview}</p>
     </div>
   );
 }
